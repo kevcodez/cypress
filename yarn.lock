@@ -27181,13 +27181,6 @@ realpath-native@^1.1.0:
   dependencies:
     util.promisify "^1.0.0"
 
-rebuild-node-sass@1.1.0:
-  version "1.1.0"
-  resolved "https://registry.yarnpkg.com/rebuild-node-sass/-/rebuild-node-sass-1.1.0.tgz#384a7d00dfca61be56c65966fffb5f4fbaf6493a"
-  integrity sha1-OEp9AN/KYb5Wxllm//tfT7r2STo=
-  dependencies:
-    execa "^0.8.0"
-
 recast@0.10.33:
   version "0.10.33"
   resolved "https://registry.yarnpkg.com/recast/-/recast-0.10.33.tgz#942808f7aa016f1fa7142c461d7e5704aaa8d697"
