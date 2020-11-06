@@ -1,6 +1,8 @@
 import { observer } from 'mobx-react'
 import React, { Component } from 'react'
 import { Dropdown } from '@packages/ui-components'
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+import { faQuestionCircle, faGraduationCap, faChevronLeft, faUser, faSpinner, faSignOutAlt } from '@fortawesome/free-solid-svg-icons'
 
 import appStore from '../lib/app-store'
 import authApi from '../auth/auth-api'
@@ -24,12 +26,12 @@ export default class Nav extends Component {
         <ul className='nav'>
           <li>
             <a onClick={this._openSupport} href='#'>
-              <i className='fas fa-question-circle'></i> Support
+              <FontAwesomeIcon icon={faQuestionCircle} /> Support
             </a>
           </li>
           <li>
             <a onClick={this._openDocs} href='#'>
-              <i className='fas fa-graduation-cap'></i> Docs
+              <FontAwesomeIcon icon={faGraduationCap} /> Docs
             </a>
           </li>
           {this._userStateButton()}
@@ -50,7 +52,7 @@ export default class Nav extends Component {
     if (appStore.isGlobalMode && project) {
       return (
         <Link to={routes.intro()}>
-          <i className='fas fa-chevron-left'></i> Back
+          <FontAwesomeIcon icon={faChevronLeft} /> Back
         </Link>
       )
     }
@@ -68,7 +70,7 @@ export default class Nav extends Component {
       return (
         <li>
           <div>
-            <i className='fas fa-user' /> <i className='fas fa-spinner fa-spin' />
+            <FontAwesomeIcon icon={faUser} /> <FontAwesomeIcon icon={faSpinner} spin />
           </div>
         </li>
       )
@@ -78,7 +80,7 @@ export default class Nav extends Component {
       return (
         <li>
           <a onClick={this._showLogin}>
-            <i className='fas fa-user' /> Log In
+            <FontAwesomeIcon icon={faUser} /> Log In
           </a>
         </li>
       )
@@ -113,7 +115,7 @@ export default class Nav extends Component {
 
     return (
       <span>
-        <i className='fas fa-sign-out-alt'></i>{' '}
+        <FontAwesomeIcon icon={faSignOutAlt} />{' '}
         Log Out
       </span>
     )

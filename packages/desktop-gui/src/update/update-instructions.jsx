@@ -7,6 +7,9 @@ import appStore from '../lib/app-store'
 import updateStore from './update-store'
 import ipc from '../lib/ipc'
 import { useLifecycle } from '../lib/use-lifecycle'
+import { faArrowAltCircleUp, faAsterisk, faCheck } from '@fortawesome/free-solid-svg-icons'
+import { faCopy } from '@fortawesome/free-regular-svg-icons'
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 
 const UpgradeCommand = observer(({ packageManager, command }) => {
   const state = useLocalStore(() => ({
@@ -38,7 +41,7 @@ const UpgradeCommand = observer(({ packageManager, command }) => {
     },
   })
 
-  const icon = state.wasCopied ? 'fas fa-check' : 'far fa-copy'
+  const icon = state.wasCopied ? faCheck : faCopy
 
   return (
     <span className={cs({ 'was-copied': state.wasCopied })}>
@@ -46,7 +49,7 @@ const UpgradeCommand = observer(({ packageManager, command }) => {
       <code>
         {command}
         <button className='copy-to-clipboard' onClick={copyToClipboard} disabled={state.wasCopied}>
-          <i className={icon}></i>
+          <FontAwesomeIcon icon={icon} />
         </button>
       </code>
     </span>
@@ -70,7 +73,7 @@ const GlobalInstructions = observer(() => {
           <span>Extract the download and replace the existing app.<strong>*</strong></span>
         </li>
       </ol>
-      <p><i className='fas fa-asterisk' /> Remember to <strong>close this app</strong> before replacing.</p>
+      <p><FontAwesomeIcon icon={faAsterisk} /> Remember to <strong>close this app</strong> before replacing.</p>
     </div>
   )
 })
@@ -88,7 +91,7 @@ const ProjectInstructions = observer(() => {
         <li>
           <UpgradeCommand packageManager='npm' command={`npm install --save-dev cypress@${updateStore.newVersion}`} />
           <UpgradeCommand packageManager='yarn' command={`yarn upgrade cypress@${updateStore.newVersion}`} />
-          <span className='footnote'><i className='fas fa-asterisk' /> Remember to <strong>close this app</strong> before installing.</span>
+          <span className='footnote'><FontAwesomeIcon icon={faAsterisk} /> Remember to <strong>close this app</strong> before installing.</span>
         </li>
         <li>
           <span>Run <a href='#' onClick={openCyOpenDoc}><code>node_modules/.bin/cypress open</code></a> to open the new version.</span>
@@ -101,7 +104,7 @@ const ProjectInstructions = observer(() => {
 export const UpdateInstructions = observer(() => (
   <>
     <header>
-      <h4><i className='fas fa-arrow-alt-circle-up'></i> Update to Version {updateStore.newVersion}</h4>
+      <h4><FontAwesomeIcon icon={faArrowAltCircleUp} /> Update to Version {updateStore.newVersion}</h4>
     </header>
     <section>
       <p>You are currently running <strong>Version {appStore.displayVersion}</strong></p>

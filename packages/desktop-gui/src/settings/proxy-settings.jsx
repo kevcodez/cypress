@@ -4,6 +4,8 @@ import { trim } from 'lodash'
 import React from 'react'
 
 import ipc from '../lib/ipc'
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+import { faInfoCircle } from '@fortawesome/free-solid-svg-icons'
 
 const trimQuotes = (input) =>
   trim(input, '"')
@@ -24,7 +26,7 @@ const openHelp = (e) => {
 const renderLearnMore = () => {
   return (
     <a href='#' className='learn-more' onClick={openHelp}>
-      <i className='fas fa-info-circle'></i> Learn more
+      <FontAwesomeIcon icon={faInfoCircle} /> Learn more
     </a>
   )
 }
@@ -64,7 +66,7 @@ const ProxySettings = observer(({ app }) => {
               <Tooltip className='cy-tooltip'
                 title='Cypress will not route requests to these domains through the configured proxy server.'
               >
-                <i className='fas fa-info-circle' />
+                <FontAwesomeIcon icon={faInfoCircle} />
               </Tooltip>
             </th>
             <td>

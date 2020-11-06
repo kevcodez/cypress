@@ -9,12 +9,14 @@ import {
   browserVersionFormatted,
   durationFormatted,
   getFormattedTimeFromNow,
-  getStatusIcon,
   gravatarUrl,
   osIcon,
   stripLeadingCyDirs,
   stripSharedDirsFromDir2,
 } from '../lib/utils'
+import { faBan, faCheck, faCheckCircle, faDesktop, faExclamationCircle, faExclamationTriangle, faGlobe, faHourglassEnd, faSyncAlt, faTerminal, faTimes } from '@fortawesome/free-solid-svg-icons'
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+import { faClock } from '@fortawesome/free-regular-svg-icons'
 
 const RunDuration = ({ run }) => {
   // Run was blocked due to exceeding limit
@@ -28,7 +30,7 @@ const RunDuration = ({ run }) => {
       return (
         <Tooltip title="Parallelization was disabled for this run." placement="top" className="cy-tooltip">
           <span className='env-duration'>
-            <i className='fas fa-exclamation-triangle orange'></i>
+            <FontAwesomeIcon icon={faExclamationTriangle} className="orange" />
             {' '}{durationFormatted(run.totalDuration)}
           </span>
         </Tooltip>
@@ -37,7 +39,7 @@ const RunDuration = ({ run }) => {
 
     return (
       <span className='env-duration'>
-        <i className='fas fa-hourglass-end'></i>
+        <FontAwesomeIcon icon={faHourglassEnd} />
         {' '}{durationFormatted(run.totalDuration)}
       </span>
     )
@@ -58,6 +60,29 @@ export default class RunsListItem extends Component {
     const run = this.props.run
     const NEWLINE = '\n'
 
+    const getStatusIcon = (status) => {
+      switch (status) {
+        case 'errored':
+          return <FontAwesomeIcon className={status} icon={faExclamationTriangle}/>
+        case 'failed':
+          return <FontAwesomeIcon className={status} icon={faExclamationCircle}/>
+        case 'noTests':
+          return <FontAwesomeIcon className={status} icon={faBan}/>
+        case 'passed':
+          return <FontAwesomeIcon className={status} icon={faCheckCircle}/>
+        case 'running':
+          return <FontAwesomeIcon className={status} icon={faSyncAlt} spin />
+        case 'overLimit':
+          return <FontAwesomeIcon className={status} icon={faExclamationTriangle}/>
+        case 'timedOut':
+          return <FontAwesomeIcon className={status} icon={faHourglassEnd}/>
+        case null:
+          return <FontAwesomeIcon className={status} icon={faTerminal}/>
+        default:
+          return null
+      }
+    }
+
     return (
       <li onClick={this._goToRun}>
         <div className={`row-column-wrapper ${run.status} status-data`}>
@@ -67,7 +92,7 @@ export default class RunsListItem extends Component {
         <div className='row-column-wrapper'>
           <div>
             <Tooltip title={_.startCase(run.status)} className='cy-tooltip'>
-              <i className={`fas ${run.status} fa-${getStatusIcon(run.status)}`}></i>
+              {getStatusIcon(run.status)}
             </Tooltip>
             {' '}#{run.buildNumber}
           </div>
@@ -116,7 +141,7 @@ export default class RunsListItem extends Component {
         </div>
         <div className='row-column-wrapper'>
           <div>
-            <i className='far fa-clock'></i>{' '}
+            <FontAwesomeIcon icon={faClock}/>{' '}
             {getFormattedTimeFromNow(run.createdAt)}
           </div>
         </div>
@@ -132,7 +157,7 @@ export default class RunsListItem extends Component {
               this._instancesExist() ?
                 this._moreThanOneInstance() && this._osLength() > 1 ?
                   <div>
-                    <i className='fas fa-fw fa-desktop'></i>{' '}
+                    <FontAwesomeIcon icon={faDesktop} fixedWidth/>{' '}
                     {this._osLength()} OSs
                   </div> :
                   // or did we only actual run it on one OS
@@ -147,7 +172,7 @@ export default class RunsListItem extends Component {
               this._instancesExist() ?
                 this._moreThanOneInstance() && this._browsersLength() > 1 ?
                   <div className='env-msg'>
-                    <i className='fas fa-fw fa-globe'></i>{' '}
+                    <FontAwesomeIcon icon={faGlobe} fixedWidth/>{' '}
                     {this._browsersLength()} browsers
                   </div> :
                   // or did we only actual run it on one browser
@@ -163,7 +188,7 @@ export default class RunsListItem extends Component {
           {
             run.status !== 'running' ?
               <div className='result'>
-                <i className='fas fa-check'></i>{' '}
+                <FontAwesomeIcon icon={faCheck} />{' '}
                 <span>
                   {run.totalPassed || '0'}
                 </span>
@@ -175,7 +200,7 @@ export default class RunsListItem extends Component {
           {
             run.status !== 'running' ?
               <div className='result'>
-                <i className='fas fa-times'></i>{' '}
+                <FontAwesomeIcon icon={faTimes} />{' '}
                 <span>
                   {run.totalFailed || '0'}
                 </span>

@@ -20,6 +20,8 @@ import Run from './runs-list-item'
 import PermissionMessage from './permission-message'
 import ProjectNotSetup from './project-not-setup'
 import DashboardBanner from './dashboard-banner'
+import { faClipboard, faExternalLinkAlt, faInfoCircle, faQuestionCircle, faSyncAlt, faWifi } from '@fortawesome/free-solid-svg-icons'
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 
 @observer
 class RunsList extends Component {
@@ -224,7 +226,7 @@ class RunsList extends Component {
           </h5>
           <div>
             <a href="#" className='btn btn-sm see-all-runs' onClick={this._openRuns}>
-              See all runs <i className='fas fa-external-link-alt'></i>
+              See all runs <FontAwesomeIcon icon={faExternalLinkAlt} />
             </a>
           </div>
         </header>
@@ -254,7 +256,7 @@ class RunsList extends Component {
   _noApiServer () {
     return (
       <div className='empty empty-no-api-server'>
-        <h4><i className='fas fa-wifi'></i> Cannot connect to API server</h4>
+        <h4><FontAwesomeIcon icon={faWifi}/> Cannot connect to API server</h4>
         <p>Viewing runs requires connecting to an external API server.</p>
         <p>We tried but failed to connect to the API server at <em>{this.state.apiUrl}</em></p>
         <p>
@@ -262,7 +264,7 @@ class RunsList extends Component {
             className='btn btn-default btn-sm'
             onClick={this._pingApiServer}
           >
-            <i className='fas fa-sync-alt'></i>{' '}
+            <FontAwesomeIcon icon={faSyncAlt}/>{' '}
             Try again
           </button>
         </p>
@@ -335,7 +337,7 @@ class RunsList extends Component {
               1. Check {configFileFormatted(this.props.project.configFile)} into source control.
             </span>
             <a onClick={this._openProjectIdGuide} className='pull-right'>
-              <i className='fas fa-question-circle'></i>{' '}
+              <FontAwesomeIcon icon={faQuestionCircle}/>{' '}
               {' '}
               Why?
             </a>
@@ -347,7 +349,7 @@ class RunsList extends Component {
                 placement='top'
                 className='cy-tooltip'
               >
-                <i className='fas fa-clipboard'></i>
+                <FontAwesomeIcon icon={faClipboard}/>
               </Tooltip>
             </a>
             <span>{'{'}</span>
@@ -359,7 +361,7 @@ class RunsList extends Component {
               2. Run this command now, or in CI.
             </span>
             <a onClick={this._openCiGuide} className='pull-right'>
-              <i className='fas fa-question-circle'></i>{' '}
+              <FontAwesomeIcon icon={faQuestionCircle}/>{' '}
               Need help?
             </a>
           </h5>
@@ -370,14 +372,14 @@ class RunsList extends Component {
                 placement='top'
                 className='cy-tooltip'
               >
-                <i className='fas fa-clipboard'></i>
+                <FontAwesomeIcon icon={faClipboard}/>
               </Tooltip>
             </a>
             <code>{recordCommand}</code>
           </pre>
           <hr />
           <p className='alert alert-default'>
-            <i className='fas fa-info-circle'></i>{' '}
+            <FontAwesomeIcon icon={faInfoCircle} />{' '}
             Recorded runs will show up{' '}
             <a href='#' onClick={this._openRunGuide}>here</a>{' '}
             and on your{' '}

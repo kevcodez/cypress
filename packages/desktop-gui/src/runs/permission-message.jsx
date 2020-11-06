@@ -5,6 +5,8 @@ import { observer } from 'mobx-react'
 import ipc from '../lib/ipc'
 import errors from '../lib/errors'
 import projectsStore from '../projects/projects-store'
+import { faCheck, faExclamationTriangle, faLock, faPaperPlane, faSpinner } from '@fortawesome/free-solid-svg-icons'
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 
 const SUCCESS = 'SUCCESS'
 const FAILURE = 'FAILURE'
@@ -55,10 +57,10 @@ class PermissionMessage extends Component {
         onClick={this._requestAccess}
       >
         <span>
-          <i className='fas fa-paper-plane'></i>{' '}
+          <FontAwesomeIcon icon={faPaperPlane} />{' '}
           Request access
         </span>
-        <i className='fas fa-spinner fa-spin'></i>
+        <FontAwesomeIcon icon={faSpinner} spin />
       </button>
     )
   }
@@ -67,7 +69,7 @@ class PermissionMessage extends Component {
     return (
       <div className='empty'>
         <h4>
-          <i className='fas fa-check passed'></i>{' '}
+          <FontAwesomeIcon icon={faCheck} className="passed" />{' '}
           Request sent
         </h4>
         <p>
@@ -89,7 +91,7 @@ class PermissionMessage extends Component {
     return (
       <div className='empty'>
         <h4>
-          <i className='fas fa-exclamation-triangle failed'></i>{' '}
+          <FontAwesomeIcon icon={faExclamationTriangle} className="failed" />{' '}
             Request Failed
         </h4>
         <p>An unexpected error occurred while requesting access:</p>
@@ -106,7 +108,7 @@ class PermissionMessage extends Component {
     return (
       <div className="empty">
         <h4>
-          <i className='fas fa-lock'></i>{' '}
+          <FontAwesomeIcon icon={faLock} />{' '}
           Request access to see the runs
         </h4>
         <p>This is a private project created by someone else.</p>

@@ -10,6 +10,8 @@ import { getReleaseNotes, useUpdateChecker } from '../update/updates'
 
 import UpdateModal from '../update/update-modal'
 import UpdateNotice from '../update/update-notice'
+import { faArrowAltCircleUp } from '@fortawesome/free-solid-svg-icons'
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 
 const openChangelog = (e) => {
   e.target.blur()
@@ -47,7 +49,7 @@ const Footer = observer(() => {
   return (
     <footer className={cs('footer', { 'update-available': updateStore.updateAvailable })}>
       <button className='version' onClick={showModal} disabled={!updateStore.updateAvailable}>
-        <i className='update-indicator fas fa-arrow-alt-circle-up' />
+        <FontAwesomeIcon icon={faArrowAltCircleUp} className="update-indicator" />
         Version {appStore.displayVersion}
       </button>
       <button className='open-changelog' onClick={openChangelog}>Changelog</button>

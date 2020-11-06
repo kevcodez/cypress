@@ -6,6 +6,8 @@ import ipc from '../lib/ipc'
 import { configFileFormatted } from '../lib/config-file-formatted'
 
 import Markdown from 'markdown-it'
+import { faCopy, faExclamationTriangle, faSyncAlt } from '@fortawesome/free-solid-svg-icons'
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 
 const _copyErrorDetails = (err) => {
   let details = [
@@ -80,7 +82,7 @@ class ErrorMessage extends Component {
       <div className='full-alert-container'>
         <div className='full-alert alert alert-danger error'>
           <p className='header'>
-            <i className='fas fa-exclamation-triangle'></i>{' '}
+            <FontAwesomeIcon icon={faExclamationTriangle} />{' '}
             <strong>{err.title || 'An unexpected error occurred'}</strong>
           </p>
           <span className='alert-content'>
@@ -109,14 +111,14 @@ class ErrorMessage extends Component {
               _copyErrorDetails(err)
             }}
           >
-            <i className='fas fa-copy'></i>{' '}
+            <FontAwesomeIcon icon={faCopy} />{' '}
             Copy to Clipboard
           </button>
           <button
             className='btn btn-default btn-sm'
             onClick={this.props.onTryAgain}
           >
-            <i className='fas fa-sync-alt'></i>{' '}
+            <FontAwesomeIcon icon={faSyncAlt} />{' '}
             Try Again
           </button>
         </div>

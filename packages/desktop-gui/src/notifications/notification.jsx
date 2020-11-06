@@ -2,6 +2,8 @@ import cs from 'classnames'
 import React from 'react'
 import { CSSTransition } from 'react-transition-group'
 import { Portal } from '@packages/ui-components'
+import { faTimes } from '@fortawesome/free-solid-svg-icons'
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 
 const Notification = ({ children, className, onClose, show }) => {
   return (
@@ -13,7 +15,7 @@ const Notification = ({ children, className, onClose, show }) => {
               {children}
             </div>
             <button className='notification-close' onClick={onClose}>
-              <i className='fas fa-times' />
+              <FontAwesomeIcon icon={faTimes} />
             </button>
           </div>
         </div>

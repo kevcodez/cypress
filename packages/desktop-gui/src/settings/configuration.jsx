@@ -6,6 +6,8 @@ import Tooltip from '@cypress/react-tooltip'
 import { ObjectInspector, ObjectName } from 'react-inspector'
 import { configFileFormatted } from '../lib/config-file-formatted'
 import ipc from '../lib/ipc'
+import { faInfoCircle } from '@fortawesome/free-solid-svg-icons'
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 
 const valueToString = (value) => {
   return (
@@ -139,7 +141,7 @@ const openHelp = (e) => {
 const Configuration = observer(({ project }) => (
   <div>
     <a href='#' className='learn-more' onClick={openHelp}>
-      <i className='fas fa-info-circle'></i> Learn more
+      <FontAwesomeIcon icon={faInfoCircle} /> Learn more
     </a>
     <p className='text-muted'>Your project's configuration is displayed below. A value can be set from the following sources:</p>
     <table className='table config-table'>

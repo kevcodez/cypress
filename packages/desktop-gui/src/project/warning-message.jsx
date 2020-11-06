@@ -1,7 +1,8 @@
-import cs from 'classnames'
 import React, { Component } from 'react'
 import { observer } from 'mobx-react'
 import MarkdownRenderer from '../lib/markdown-renderer'
+import { faExclamationTriangle, faSync, faTimes } from '@fortawesome/free-solid-svg-icons'
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 
 @observer
 class WarningMessage extends Component {
@@ -12,7 +13,7 @@ class WarningMessage extends Component {
     return (
       <div className='alert alert-warning'>
         <p className='header'>
-          <i className='fas fa-exclamation-triangle'></i>{' '}
+          <FontAwesomeIcon icon={faExclamationTriangle} />{' '}
           <strong>Warning</strong>
         </p>
         <div>
@@ -23,13 +24,13 @@ class WarningMessage extends Component {
               disabled={warning.isRetrying}
               onClick={this.props.onRetry}
             >
-              <i className={cs('fas fa-sync', { 'fa-spin': warning.isRetrying })} />
+              <FontAwesomeIcon icon={faSync} spin={warning.isRetrying} />
               {warning.isRetrying ? 'Retrying...' : 'Try Again'}
             </button>
           }
         </div>
         <button className='btn btn-link close' onClick={this.props.onDismissWarning}>
-          <i className='fas fa-times' />
+          <FontAwesomeIcon icon={faTimes} />
         </button>
       </div>
     )

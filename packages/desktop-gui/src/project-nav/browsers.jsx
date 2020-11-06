@@ -5,6 +5,9 @@ import { BrowserIcon, Dropdown } from '@packages/ui-components'
 
 import MarkdownRenderer from '../lib/markdown-renderer'
 import projectsApi from '../projects/projects-api'
+import { faExclamationTriangle, faInfoCircle, faSyncAlt, faTimes } from '@fortawesome/free-solid-svg-icons'
+import { faCheckCircle } from '@fortawesome/free-regular-svg-icons'
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 
 @observer
 export default class Browsers extends Component {
@@ -35,7 +38,7 @@ export default class Browsers extends Component {
       return (
         <li className='close-browser'>
           <button className='btn btn-xs btn-danger' onClick={this._closeBrowser.bind(this)}>
-            <i className='fas fa-fw fa-times'></i>
+            <FontAwesomeIcon icon={faTimes} fixedWidth/>
             Stop
           </button>
         </li>
@@ -58,10 +61,10 @@ export default class Browsers extends Component {
     let prefixText
 
     if (project.browserState === 'opening') {
-      icon = <i className='fas fa-sync-alt fa-spin' />
+      icon = <FontAwesomeIcon icon={faSyncAlt} spin />
       prefixText = 'Opening'
     } else if (project.browserState === 'opened') {
-      icon = <i className='fas fa-check-circle green far' />
+      icon = <FontAwesomeIcon icon={faCheckCircle} className="green" />
       prefixText = 'Running'
     } else {
       icon = <BrowserIcon browserName={browser.displayName} />
@@ -90,7 +93,7 @@ export default class Browsers extends Component {
           placement='bottom'
           className='browser-info-tooltip cy-tooltip'
         >
-          <i className='fas fa-exclamation-triangle' />
+          <FontAwesomeIcon icon={faExclamationTriangle} />
         </Tooltip>
       </span>
     )
@@ -106,7 +109,7 @@ export default class Browsers extends Component {
           placement='bottom'
           className='browser-info-tooltip cy-tooltip'
         >
-          <i className='fas fa-info-circle' />
+          <FontAwesomeIcon icon={faInfoCircle} />
         </Tooltip>
       </span>
     )

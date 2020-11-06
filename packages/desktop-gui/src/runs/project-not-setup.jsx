@@ -7,6 +7,8 @@ import { configFileFormatted } from '../lib/config-file-formatted'
 import SetupProject from './setup-project-modal'
 import DashboardBanner from './dashboard-banner'
 import authStore from '../auth/auth-store'
+import { faExclamationTriangle, faWrench } from '@fortawesome/free-solid-svg-icons'
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 
 @observer
 export default class ProjectNotSetup extends Component {
@@ -67,7 +69,7 @@ export default class ProjectNotSetup extends Component {
     return (
       <div className='empty-runs-not-displayed'>
         <h4>
-          <i className='fas fa-exclamation-triangle errored'></i>{' '}
+          <FontAwesomeIcon icon={faExclamationTriangle} className="errored" />{' '}
           Runs cannot be displayed
         </h4>
         <p>We were unable to find an existing project matching the <code>projectId</code> in your {configFileFormatted(this.props.project.configFile)}.</p>
@@ -77,7 +79,7 @@ export default class ProjectNotSetup extends Component {
           className='btn btn-warning'
           onClick={this._showSetupProjectModal}
         >
-          <i className='fas fa-wrench'></i>{' '}
+          <FontAwesomeIcon icon={faWrench} />{' '}
           Set up a new project
         </button>
         <p>

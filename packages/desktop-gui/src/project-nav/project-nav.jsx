@@ -2,6 +2,8 @@ import React, { Component } from 'react'
 
 import Browsers from './browsers'
 import { Link, routes } from '../lib/routing'
+import { faCode, faCog, faDatabase } from '@fortawesome/free-solid-svg-icons'
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 
 export default class ProjectNav extends Component {
   render () {
@@ -12,19 +14,19 @@ export default class ProjectNav extends Component {
         <ul className='nav left-nav'>
           <li>
             <Link to={routes.specs(project)}>
-              <i className='fas fa-code'></i>{' '}
+              <FontAwesomeIcon icon={faCode} />{' '}
               Tests
             </Link>
           </li>
           <li>
             <Link to={routes.runs(project)}>
-              <i className='fas fa-database'></i>{' '}
+              <FontAwesomeIcon icon={faDatabase} />{' '}
               Runs
             </Link>
           </li>
           <li>
             <Link to={routes.settings(project)}>
-              <i className='fas fa-cog'></i>{' '}
+              <FontAwesomeIcon icon={faCog} />{' '}
               Settings
             </Link>
           </li>

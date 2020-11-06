@@ -1,6 +1,8 @@
 import React, { Component } from 'react'
 import { observer } from 'mobx-react'
 import TimerStore from './duration-timer-store'
+import { faHourglassHalf } from '@fortawesome/free-solid-svg-icons'
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 
 @observer
 export default class TimerDisplay extends Component {
@@ -21,7 +23,7 @@ export default class TimerDisplay extends Component {
   render () {
     return (
       <span className='env-duration'>
-        <i className='fas fa-hourglass-half'></i>
+        <FontAwesomeIcon icon={faHourglassHalf} />
         {this.timerStore.mainDisplay}
       </span>
     )

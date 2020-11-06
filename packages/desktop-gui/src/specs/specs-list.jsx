@@ -11,6 +11,9 @@ import FileOpener from './file-opener'
 import ipc from '../lib/ipc'
 import projectsApi from '../projects/projects-api'
 import specsStore, { allIntegrationSpecsSpec, allComponentSpecsSpec } from './specs-store'
+import { faCaretDown, faCaretRight, faQuestionCircle, faSearch, faTimes } from '@fortawesome/free-solid-svg-icons'
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+import { faFolder, faFolderOpen } from '@fortawesome/free-regular-svg-icons'
 
 /**
  * Returns a label text for a button.
@@ -75,7 +78,7 @@ class SpecsList extends Component {
             'show-clear-filter': !!specsStore.filter,
           })}>
             <label htmlFor='filter'>
-              <i className='fas fa-search' />
+              <FontAwesomeIcon icon={faSearch} />
             </label>
             <input
               id='filter'
@@ -109,7 +112,7 @@ class SpecsList extends Component {
             this._clearFilter()
             this.filterRef.current.focus()
           }} className='btn btn-link'>
-            <i className='fas fa-times'/> Clear search
+            <FontAwesomeIcon icon={faTimes}/> Clear search
           </a>
         </div>
       )
@@ -239,8 +242,8 @@ class SpecsList extends Component {
       <li key={spec.path} className={`folder level-${nestingLevel} ${isExpanded ? 'folder-expanded' : 'folder-collapsed'}`}>
         <div>
           <div className="folder-name" onClick={this._selectSpecFolder.bind(this, spec)}>
-            <i className={`folder-collapse-icon fas fa-fw ${isExpanded ? 'fa-caret-down' : 'fa-caret-right'}`} />
-            {nestingLevel !== 0 ? <i className={`far fa-fw ${isExpanded ? 'fa-folder-open' : 'fa-folder'}`} /> : null}
+            <FontAwesomeIcon icon={isExpanded ? faCaretDown : faCaretRight} fixedWidth className="folder-collapse-icon"/>
+            {nestingLevel !== 0 ? <FontAwesomeIcon icon={isExpanded ? faFolderOpen : faFolder} fixedWidth /> : null}
             {
               nestingLevel === 0 ?
                 <>
@@ -306,7 +309,7 @@ class SpecsList extends Component {
             </code>
           </h5>
           <a className='helper-docs-link' onClick={this._openHelp}>
-            <i className='fas fa-question-circle' />{' '}
+            <FontAwesomeIcon icon={faQuestionCircle}/>{' '}
               Need help?
           </a>
         </div>

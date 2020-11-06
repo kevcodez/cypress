@@ -2,6 +2,8 @@ import React from 'react'
 import { observer } from 'mobx-react'
 
 import errors from '../lib/errors'
+import { faExclamationTriangle } from '@fortawesome/free-solid-svg-icons'
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 
 const ErrorMessage = observer(({ error }) => {
   let errorMessage
@@ -29,7 +31,7 @@ const ErrorMessage = observer(({ error }) => {
     <div className='runs-list-error'>
       <div className='empty'>
         <h4>
-          <i className='fas fa-exclamation-triangle red'></i>{' '}
+          <FontAwesomeIcon icon={faExclamationTriangle} className="red" />{' '}
           Runs could not be loaded
         </h4>
         {errorMessage}

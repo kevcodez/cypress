@@ -4,6 +4,8 @@ import { observer } from 'mobx-react'
 import ipc from '../lib/ipc'
 import experiments from '@packages/server/lib/experiments'
 import MarkdownRenderer from '../lib/markdown-renderer'
+import { faInfoCircle } from '@fortawesome/free-solid-svg-icons'
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 
 const openHelp = (e) => {
   e.preventDefault()
@@ -16,7 +18,7 @@ const Experiments = observer(({ project }) => {
   return (
     <div data-cy='experiments'>
       <a href='#' className='learn-more' data-cy='experiments' onClick={openHelp}>
-        <i className='fas fa-info-circle'></i> Learn more
+        <FontAwesomeIcon icon={faInfoCircle} /> Learn more
       </a>
       <div>
         <p className='experiment-intro'>

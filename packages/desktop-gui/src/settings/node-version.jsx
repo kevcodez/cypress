@@ -1,3 +1,5 @@
+import { faInfoCircle } from '@fortawesome/free-solid-svg-icons'
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import _ from 'lodash'
 import { observer } from 'mobx-react'
 import React from 'react'
@@ -12,7 +14,7 @@ const openHelp = (e) => {
 const renderLearnMore = () => {
   return (
     <a href='#' className='learn-more' onClick={openHelp}>
-      <i className='fas fa-info-circle'></i> Learn more
+      <FontAwesomeIcon icon={faInfoCircle} /> Learn more
     </a>
   )
 }

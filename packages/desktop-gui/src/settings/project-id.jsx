@@ -4,6 +4,8 @@ import Tooltip from '@cypress/react-tooltip'
 
 import ipc from '../lib/ipc'
 import { configFileFormatted } from '../lib/config-file-formatted'
+import { faClipboard, faInfoCircle } from '@fortawesome/free-solid-svg-icons'
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 
 const openProjectIdHelp = (e) => {
   e.preventDefault()
@@ -20,7 +22,7 @@ const ProjectId = observer(({ project }) => {
   return (
     <div data-cy="project-id">
       <a href='#' className='learn-more' onClick={openProjectIdHelp}>
-        <i className='fas fa-info-circle'></i>{' '}
+        <FontAwesomeIcon icon={faInfoCircle} />{' '}
         Learn more
       </a>
       <p className='text-muted'>This projectId should be in your {configFileFormatted(project.configFile)} and checked into source control.
@@ -33,7 +35,7 @@ const ProjectId = observer(({ project }) => {
             placement='top'
             className='cy-tooltip'
           >
-            <i className='fas fa-clipboard'></i>
+            <FontAwesomeIcon icon={faClipboard} />
           </Tooltip>
         </a>
         <span>{'{'}</span>

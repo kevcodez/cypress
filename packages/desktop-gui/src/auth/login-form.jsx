@@ -6,6 +6,8 @@ import authApi from './auth-api'
 import authStore from './auth-store'
 import ipc from '../lib/ipc'
 import MarkdownRenderer from '../lib/markdown-renderer'
+import { faExclamationTriangle, faSpinner } from '@fortawesome/free-solid-svg-icons'
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 
 @observer
 class LoginForm extends Component {
@@ -61,7 +63,7 @@ class LoginForm extends Component {
       if (message && message.name === 'AUTH_COULD_NOT_LAUNCH_BROWSER') {
         return (
           <span>
-            <i className='fas fa-exclamation-triangle'></i>{' '}
+            <FontAwesomeIcon icon={faExclamationTriangle} />{' '}
             Could not open browser.
           </span>
         )
@@ -69,7 +71,7 @@ class LoginForm extends Component {
 
       return (
         <span>
-          <i className='fas fa-spinner fa-spin'></i>{' '}
+          <FontAwesomeIcon icon={faSpinner} spin />{' '}
           {message && message.browserOpened ? 'Waiting for browser login...' : 'Opening browser...'}
         </span>
       )
@@ -90,7 +92,7 @@ class LoginForm extends Component {
     return (
       <div className='alert alert-danger'>
         <p>
-          <i className='fas fa-exclamation-triangle'></i>{' '}
+          <FontAwesomeIcon icon={faExclamationTriangle} />{' '}
           <strong>Can't Log In</strong>
         </p>
         <p>{this._errorMessage(error.message)}</p>

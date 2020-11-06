@@ -5,6 +5,8 @@ import { observer } from 'mobx-react'
 import BootstrapModal from 'react-bootstrap-modal'
 
 import ipc from '../lib/ipc'
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+import { faFileCode, faFolder, faFolderOpen } from '@fortawesome/free-regular-svg-icons'
 
 @observer
 class OnBoarding extends Component {
@@ -43,12 +45,12 @@ class OnBoarding extends Component {
             <p>
               We've added some folders and example tests to your project. Try running the tests in the
               <strong onClick={this._openExampleSpec}>
-                <i className='far fa-folder'></i>{' '}
+                <FontAwesomeIcon icon={faFolder}/>{' '}
                 {project.integrationExampleName}{' '}
               </strong>
               folder or add your own test files to
               <strong onClick={this._openIntegrationFolder}>
-                <i className='far fa-folder'></i>{' '}
+                <FontAwesomeIcon icon={faFolder}/>{' '}
                 cypress/integration
               </strong>.
             </p>
@@ -56,13 +58,13 @@ class OnBoarding extends Component {
               <ul>
                 <li>
                   <span>
-                    <i className='far fa-folder-open'></i>{' '}
+                    <FontAwesomeIcon icon={faFolderOpen}/>{' '}
                     {project.name}
                   </span>
                   <ul>
                     <li className='app-code'>
                       <span >
-                        <i className='far fa-folder'></i>{' '}
+                        <FontAwesomeIcon icon={faFolderOpen}/>{' '}
                         ...
                       </span>
                     </li>
@@ -98,7 +100,7 @@ class OnBoarding extends Component {
         return (
           <li className={cs(className, 'new-item')} key={file.name}>
             <span>
-              <i className='far fa-folder-open'></i>{' '}
+              <FontAwesomeIcon icon={faFolderOpen}/>{' '}
               {file.name}
             </span>
             <ul>
@@ -111,7 +113,7 @@ class OnBoarding extends Component {
       return (
         <li className={cs(className, 'new-item', { 'is-more': file.more })} key={file.name}>
           <span>
-            <i className='far fa-file-code'></i>{' '}
+            <FontAwesomeIcon icon={faFileCode}/>{' '}
             {file.name}
           </span>
         </li>

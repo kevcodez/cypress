@@ -88,29 +88,6 @@ export const gravatarUrl = (email) => {
   return gravatar.url(email, opts, true)
 }
 
-export const getStatusIcon = (status) => {
-  switch (status) {
-    case 'errored':
-      return 'exclamation-triangle'
-    case 'failed':
-      return 'exclamation-circle'
-    case 'noTests':
-      return 'ban'
-    case 'passed':
-      return 'check-circle'
-    case 'running':
-      return 'sync-alt fa-spin'
-    case 'overLimit':
-      return 'exclamation-triangle'
-    case 'timedOut':
-      return 'hourglass-end'
-    case null:
-      return 'terminal'
-    default:
-      return ''
-  }
-}
-
 export function stripLeadingCyDirs (spec) {
   if (!spec) return null
 

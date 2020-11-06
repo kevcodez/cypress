@@ -1,3 +1,5 @@
+import { faTimes } from '@fortawesome/free-solid-svg-icons'
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { observer } from 'mobx-react'
 import React from 'react'
 import BootstrapModal from 'react-bootstrap-modal'
@@ -29,7 +31,7 @@ const UpdateModal = observer(({ show, onClose }) => {
     <BootstrapModal show={show} onHide={onClose} backdrop='static'>
       <div className='update-modal modal-body os-dialog'>
         <BootstrapModal.Dismiss className='close'>
-          <i className='fas fa-times' />
+          <FontAwesomeIcon icon={faTimes} />
         </BootstrapModal.Dismiss>
         <Contents onShowInstructions={showInstructions} />
       </div>

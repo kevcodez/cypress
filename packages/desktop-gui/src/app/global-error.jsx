@@ -1,5 +1,7 @@
 import { observer } from 'mobx-react'
 import React from 'react'
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+import { faExclamationTriangle, faTimes } from '@fortawesome/free-solid-svg-icons'
 
 import appStore from '../lib/app-store'
 
@@ -13,14 +15,14 @@ const GlobalError = observer(() => {
   return (
     <div className='global-error alert alert-danger'>
       <p>
-        <i className="fas fa-exclamation-triangle"></i>{' '}
+        <FontAwesomeIcon icon={faExclamationTriangle} />{' '}
         <strong>{appStore.error.name || 'Unexpected Error'}</strong>
       </p>
       <p dangerouslySetInnerHTML={{
         __html: appStore.error.message.split('\n').join('<br />'),
       }} />
       <button className='btn btn-link close' onClick={remove}>
-        <i className='fas fa-times' />
+        <FontAwesomeIcon icon={faTimes} />
       </button>
     </div>
   )

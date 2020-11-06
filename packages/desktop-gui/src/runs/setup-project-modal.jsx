@@ -11,6 +11,9 @@ import authStore from '../auth/auth-store'
 import ipc from '../lib/ipc'
 import orgsStore from '../organizations/organizations-store'
 import orgsApi from '../organizations/organizations-api'
+import { faLock, faQuestionCircle, faSyncAlt } from '@fortawesome/free-solid-svg-icons'
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+import { faEye } from '@fortawesome/free-regular-svg-icons'
 
 @observer
 class SetupProject extends Component {
@@ -102,7 +105,7 @@ class SetupProject extends Component {
               >
                 {
                   this.state.isSubmitting ?
-                    <span><i className='fas fa-spin fa-sync-alt'></i>{' '}</span> :
+                    <span><FontAwesomeIcon icon={faSyncAlt} spin/>{' '}</span> :
                     null
                 }
                 <span>Set up project</span>
@@ -147,7 +150,7 @@ class SetupProject extends Component {
             Who should own this project?
             {' '}
             <a onClick={this._openOrgDocs}>
-              <i className='fas fa-question-circle'></i>
+              <FontAwesomeIcon icon={faQuestionCircle} />
             </a>
 
           </label>
@@ -185,7 +188,7 @@ class SetupProject extends Component {
           Who should see the runs and recordings?
           {' '}
           <a onClick={this._openAccessDocs}>
-            <i className='fas fa-question-circle'></i>
+            <FontAwesomeIcon icon={faQuestionCircle} />
           </a>
         </label>
         <div className='radio privacy-radio'>
@@ -198,7 +201,7 @@ class SetupProject extends Component {
               onChange={this._updateAccess}
             />
             <p>
-              <i className='far fa-eye'></i>{' '}
+              <FontAwesomeIcon icon={faEye}/>{' '}
               <strong>Public:</strong>{' '}
               Anyone has access.
             </p>
@@ -214,7 +217,7 @@ class SetupProject extends Component {
               onChange={this._updateAccess}
             />
             <p>
-              <i className='fas fa-lock'></i>{' '}
+              <FontAwesomeIcon icon={faLock} />{' '}
               <strong>Private:</strong>{' '}
               Only invited users have access.
             </p>

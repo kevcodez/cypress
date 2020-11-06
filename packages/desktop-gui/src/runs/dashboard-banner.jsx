@@ -1,3 +1,6 @@
+import { faClock } from '@fortawesome/free-regular-svg-icons'
+import { faCheck, faHourglassEnd } from '@fortawesome/free-solid-svg-icons'
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import _ from 'lodash'
 import React from 'react'
 
@@ -12,7 +15,7 @@ const DashboardBanner = () => {
             <div className='dashboard-banner-test-left'>
               <div className='dashboard-banner-test-title'>
                 <div className='test-title-top'>
-                  <i className='fas fa-check' />
+                  <FontAwesomeIcon icon={faCheck} />
                   {_.capitalize(test)}ed test
                 </div>
                 <div className='test-title-bottom'>
@@ -23,11 +26,11 @@ const DashboardBanner = () => {
               </div>
             </div>
             <div className='dashboard-banner-test-mid'>
-              <i className='far fa-clock' />
+              <FontAwesomeIcon icon={faClock}/>
               <div className='fake-text' />
             </div>
             <div className='dashboard-banner-test-end'>
-              <i className='fas fa-hourglass-end' />
+              <FontAwesomeIcon icon={faHourglassEnd} />
               <div className='fake-text' />
             </div>
           </div>

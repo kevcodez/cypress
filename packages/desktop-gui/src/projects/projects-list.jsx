@@ -6,6 +6,8 @@ import Loader from 'react-loader'
 import projectsApi from './projects-api'
 import projectsStore from './projects-store'
 import { Link, routes } from '../lib/routing'
+import { faExclamationTriangle, faTimes } from '@fortawesome/free-solid-svg-icons'
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 
 const ProjectListItem = observer(({ project, onSelect, onRemove }) => (
   <li>
@@ -17,7 +19,7 @@ const ProjectListItem = observer(({ project, onSelect, onRemove }) => (
       e.stopPropagation()
       onRemove()
     }}>
-      <i className='fas fa-times' />
+      <FontAwesomeIcon icon={faTimes} />
     </button>
   </li>
 ))
@@ -46,7 +48,7 @@ class ProjectsList extends Component {
     return (
       <div className='alert alert-danger'>
         <p>
-          <i className='fas fa-exclamation-triangle'></i>{' '}
+          <FontAwesomeIcon icon={faExclamationTriangle} />{' '}
           <strong>Error</strong>
         </p>
         <p dangerouslySetInnerHTML={{

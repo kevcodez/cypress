@@ -8,6 +8,8 @@ import Select from 'react-select'
 
 import authStore from '../auth/auth-store'
 import { gravatarUrl } from '../lib/utils'
+import { faPlus } from '@fortawesome/free-solid-svg-icons'
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 
 @observer
 class OrgSelector extends Component {
@@ -36,7 +38,7 @@ class OrgSelector extends Component {
               href='#'
               className='btn btn-link'
               onClick={this.props.onCreateOrganization}>
-              <i className='fas fa-plus'></i>{' '}
+              <FontAwesomeIcon icon={faPlus} />{' '}
               Create organization
             </a>
           </p>

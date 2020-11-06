@@ -3,6 +3,8 @@ import cs from 'classnames'
 import React, { Component } from 'react'
 import { action, observable } from 'mobx'
 import { observer } from 'mobx-react'
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+import { faFolder, faPlus, faInfoCircle } from '@fortawesome/free-solid-svg-icons'
 
 import appStore from '../lib/app-store'
 import ipc from '../lib/ipc'
@@ -34,8 +36,8 @@ class Default extends Component {
             onDrop={this._drop}
           >
             <span className="fa-stack fa-lg">
-              <i className="fas fa-folder fa-stack-2x"></i>
-              <i className="fas fa-plus fa-stack-1x"></i>
+              <FontAwesomeIcon icon={faFolder} className="fa-stack-2x" />
+              <FontAwesomeIcon icon={faPlus} className="fa-stack-1x" />
             </span>
             <p>Drag your project here or <a href="#" onClick={this._selectProject}>select manually</a>.</p>
           </div>
@@ -51,7 +53,7 @@ class Default extends Component {
     return (
       <div className='local-install-notice alert alert-info alert-dismissible'>
         <p className='text-center'>
-          <i className='fas fa-info-circle'></i>{' '}
+          <FontAwesomeIcon icon={faInfoCircle} />{' '}
           We recommend versioning Cypress per project and{' '}
           <a onClick={this._openHelp} className='helper-docs-link'>
             installing it via <span className='mono'>npm</span>

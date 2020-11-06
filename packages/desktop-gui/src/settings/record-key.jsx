@@ -6,6 +6,8 @@ import Tooltip from '@cypress/react-tooltip'
 import ipc from '../lib/ipc'
 import authStore from '../auth/auth-store'
 import projectsApi from '../projects/projects-api'
+import { faClipboard, faInfoCircle, faKey, faSpinner, faUser } from '@fortawesome/free-solid-svg-icons'
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 
 const openDashboardProject = (project) => (e) => {
   e.preventDefault()
@@ -75,7 +77,7 @@ class RecordKey extends Component {
     return (
       <div>
         <a href='#' className='learn-more' onClick={openRecordKeyGuide}>
-          <i className='fas fa-info-circle'></i> Learn more
+          <FontAwesomeIcon icon={faInfoCircle} /> Learn more
         </a>
         <p className='text-muted'>
           A Record Key sends your failing tests, screenshots, and videos to your{' '}
@@ -97,7 +99,7 @@ class RecordKey extends Component {
             className='btn btn-primary'
             onClick={showLogin}
           >
-            <i className='fas fa-user'></i>{' '}
+            <FontAwesomeIcon icon={faUser} />{' '}
             Log In
           </button>
         </p>
@@ -107,7 +109,7 @@ class RecordKey extends Component {
     if (this.isLoading) {
       return (
         <p className='loading-record-keys'>
-          <i className='fas fa-spinner fa-spin'></i>{' '}
+          <FontAwesomeIcon icon={faSpinner} spin/>{' '}
           Loading Keys...
         </p>
       )
@@ -137,14 +139,14 @@ class RecordKey extends Component {
                 placement='top'
                 className='cy-tooltip'
               >
-                <i className='fas fa-clipboard'></i>
+                <FontAwesomeIcon icon={faClipboard} />
               </Tooltip>
             </a>
           </pre>
         </p>
         <p className='text-muted manage-btn'>
           <a href='#' onClick={openDashboardProjectSettings(this.props.project)}>
-            <i className='fas fa-key'></i> You can change this key in the Dashboard
+            <FontAwesomeIcon icon={faKey}/> You can change this key in the Dashboard
           </a>
         </p>
       </div>
